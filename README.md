@@ -27,13 +27,13 @@ mkdir mymvcweb
 
 cd mymvcweb
 
-dotnet new
+dotnet new mvc
 
 dotnet restore
 
 dotnet build 
 
-dotnet publish - c "Release"
+dotnet publish -c "Release"
 
 
 
@@ -164,7 +164,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
-    links :
+    links:
       - mymvcweb
 
 ```
@@ -241,16 +241,16 @@ Open http://localhost:80 in the browser and you should see the default view of i
 
 ```
 docker-compose stop
-docer-compse rm
+docker-compose rm
 ```
 
 
 # Push container images to ECR
-Create two ECR repositories nameyl 'mywebmvc' and 'reverseproxy', one for the ASP.NET core mvc application and other for the nginx reverse proxy.
+Create two ECR repositories nameyl 'mymvcweb' and 'reverseproxy', one for the ASP.NET core mvc application and other for the nginx reverse proxy.
 
 
 
-Now let's fetch the push commands for 'mywebmvc' repository and execute the following in the terminal.
+Now let's fetch the push commands for 'mymvcweb' repository and execute the following in the terminal.
 
 
 
@@ -273,12 +273,12 @@ docker tag aspnetcorefargate_mymvcweb:latest yourawsaccountnumber.dkr.ecr.us-eas
 
 
 
-Push the 'mymvcweb' image to the remote 'mymvvcweb' repository.
+Push the 'mymvcweb' image to the remote 'mymvcweb' repository.
 
 
 
 ```
-docker push yourawsaccountnumber.dkr.ecr.us-east-1.amazonaws.com/mywebmvc:latest 
+docker push yourawsaccountnumber.dkr.ecr.us-east-1.amazonaws.com/mymvcweb:latest 
 ```
 
 
